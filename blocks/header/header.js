@@ -236,7 +236,7 @@ export default async function decorate(block) {
   </div>
   `);
 
-  navTools.append(search);
+  navTools?.append(search);
 
   const searchPanel = navTools.querySelector('.nav-search-panel');
   const searchButton = navTools.querySelector('.nav-search-button');
@@ -248,7 +248,7 @@ export default async function decorate(block) {
     if (show) searchInput.focus();
   }
 
-  navTools.querySelector('.nav-search-button').addEventListener('click', async () => {
+  navTools?.querySelector('.nav-search-button').addEventListener('click', async () => {
     await import('./searchbar.js');
     document.querySelector('header .nav-search-input').classList.toggle('hidden');
     toggleSearch();
@@ -263,11 +263,11 @@ export default async function decorate(block) {
 
   // hamburger for mobile
   const hamburger = document.createElement('div');
-  hamburger.classList.add('nav-hamburger');
-  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
+  hamburger?.classList.add('nav-hamburger');
+  hamburger?.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
       <span class="nav-hamburger-icon"></span>
     </button>`;
-  hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
+  hamburger?.addEventListener('click', () => toggleMenu(nav, navSections));
   nav.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');
   // prevent mobile nav behavior on window resize
@@ -275,9 +275,9 @@ export default async function decorate(block) {
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
 
   const navWrapper = document.createElement('div');
-  navWrapper.className = 'header-nav-wrapper';
-  navWrapper.append(nav);
-  block.append(navWrapper);
+  navWrapper?.className = 'header-nav-wrapper';
+  navWrapper?.append(nav);
+  block?.append(navWrapper);
 
   addAnimation();
   setActiveTab();
